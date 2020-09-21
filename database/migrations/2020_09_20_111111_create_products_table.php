@@ -13,15 +13,18 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nama_barang');
-            $table->integer('harga_satuan');
-            $table->string('photo');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('products')) {
+            Schema::create('products', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('nama_barang');
+                $table->integer('harga_satuan');
+                $table->string('photo');
+                $table->timestamps();
+            });
+        }
     }
 
+    
     /**
      * Reverse the migrations.
      *

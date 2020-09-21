@@ -14,15 +14,14 @@ class CreateOfferDetailsTable extends Migration
     public function up()
     {
         Schema::create('offer_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id')->unsigned();
-            $tablt->integer('qty');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('product_id');
+            $table->integer('qty');
             $table->integer('harga_total');
-            $table->integer('disc',3);
+            $table->integer('disc');
             $table->timestamps();
-
-
-            $tbale->foreign('product_id')->reference('id')->on('products');
+        
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

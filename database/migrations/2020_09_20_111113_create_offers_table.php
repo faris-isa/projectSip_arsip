@@ -15,12 +15,12 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer("offer_detail_id")->unsigned();
+            $table->unsignedBigInteger("offer_detail_id");
             $table->string('nama_pembeli','50');
             $table->integer('total_biaya');
             $table->timestamps();
 
-            $tbale->foreign('offer_detail_id')->reference('id')->on('offer_details');
+            $table->foreign('offer_detail_id')->references('id')->on('offer_details');
         });
     }
 

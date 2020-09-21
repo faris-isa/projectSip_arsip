@@ -15,13 +15,13 @@ class CreateOfferPurchasesTable extends Migration
     {
         Schema::create('offer_purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('offer_id')->unsigned();
-            $table->integer('purchase_id')->unsigned();
+            $table->unsignedBigInteger('offer_id');
+            $table->unsignedBigInteger('purchase_id');
             $table->enum('status',['penawaran', 'pembelian','selesai']);
             $table->timestamps();
 
-            $tbale->foreign('offer_id')->reference('id')->on('offers');
-            $tbale->foreign('puchase_id')->reference('id')->on('purchases');
+            $table->foreign('purchase_id')->references('id')->on('purchases');
+            $table->foreign('offer_id')->references('id')->on('offers');
         });
     }
 
