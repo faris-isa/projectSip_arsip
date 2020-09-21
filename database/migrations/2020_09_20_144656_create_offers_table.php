@@ -18,7 +18,7 @@ class CreateOffersTable extends Migration
             $table->integer("offer_detail_id")->unsigned();
             $table->string('nama_pembeli','50');
             $table->integer('total_biaya');
-            $table->timestamps('created_date');
+            $table->timestamps();
 
             $tbale->foreign('offer_detail_id')->reference('id')->on('offer_details');
         });

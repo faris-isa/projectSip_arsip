@@ -17,7 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('purchase_detail_id')->unsigned();
             $table->integer('qty');
-            $table->timestamps('created_date');
+            $table->timestamps();
 
             $tbale->foreign('purchase_detail_id')->reference('id')->on('purchase_details');
         });

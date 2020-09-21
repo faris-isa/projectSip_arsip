@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->enum('tipe',['super', 'admin']);
             $table->rememberToken();
-            $table->timestamps('created_date');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

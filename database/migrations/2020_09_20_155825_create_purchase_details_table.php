@@ -18,7 +18,9 @@ class CreatePurchaseDetailsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->string('serial_number');
             $table->integer('masa_garansi');
-            $table->timestamps('created_date');
+            $table->timestamps();
+
+            $tbale->foreign('product_id')->reference('id')->on('products');
         });
     }
 

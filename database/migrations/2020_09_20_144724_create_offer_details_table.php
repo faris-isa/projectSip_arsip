@@ -19,7 +19,7 @@ class CreateOfferDetailsTable extends Migration
             $tablt->integer('qty');
             $table->integer('harga_total');
             $table->integer('disc',3);
-            $table->timestamps('created_date');
+            $table->timestamps();
 
 
             $tbale->foreign('product_id')->reference('id')->on('products');

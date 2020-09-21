@@ -18,7 +18,7 @@ class CreateOfferPurchasesTable extends Migration
             $table->integer('offer_id')->unsigned();
             $table->integer('purchase_id')->unsigned();
             $table->enum('status',['penawaran', 'pembelian','selesai']);
-            $table->timestamps('created_date');
+            $table->timestamps();
 
             $tbale->foreign('offer_id')->reference('id')->on('offers');
             $tbale->foreign('puchase_id')->reference('id')->on('purchases');
