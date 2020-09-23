@@ -4,7 +4,7 @@ import {Container} from 'reactstrap';
 import Header from '../../components/Header/';
 import Sidebar from '../../components/Sidebar/';
 import Breadcrumb from '../../components/Breadcrumb/';
-import Aside from '../../components/Aside/';
+// import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
 import Dashboard from '../../views/Dashboard/';
@@ -16,6 +16,7 @@ import Charts from '../../views/Charts/';
 import Widgets from '../../views/Widgets/';
 
 // Base
+import Products from '../../views/Products';
 import Cards from '../../views/Base/Cards/';
 import Forms from '../../views/Base/Forms/';
 import Switches from '../../views/Base/Switches/';
@@ -62,6 +63,7 @@ class Full extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route path="/products" name="Products" component={Products} />
                 <Route path="/theme/colors" name="Colors" component={Colors}/>
                 <Route path="/theme/typography" name="Typography" component={Typography}/>
                 <Route path="/base/cards" name="Cards" component={Cards}/>
@@ -97,7 +99,7 @@ class Full extends Component {
               </Switch>
             </Container>
           </main>
-          <Aside/>
+          {/* <Aside/> */}
         </div>
         <Footer/>
       </div>

@@ -31,10 +31,10 @@ class Header extends Component {
     document.body.classList.toggle('sidebar-mobile-show');
   }
 
-  asideToggle(e) {
-    e.preventDefault();
-    document.body.classList.toggle('aside-menu-hidden');
-  }
+  // asideToggle(e) {
+  //   e.preventDefault();
+  //   document.body.classList.toggle('aside-menu-hidden');
+  // }
 
   render() {
     return (
@@ -69,9 +69,9 @@ class Header extends Component {
           </NavItem>
           <HeaderDropdown/>
         </Nav>
-        <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
+        {/* <NavbarToggler className="d-md-down-none" onClick={this.asideToggle}>
           <span className="navbar-toggler-icon"></span>
-        </NavbarToggler>
+        </NavbarToggler> */}
       </header>
     );
   }
