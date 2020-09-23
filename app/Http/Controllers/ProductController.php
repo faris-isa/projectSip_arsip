@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Resources\Products as ProductResources;
+use App\Http\Resources\Product as ProductResources;
 use App\Models\Product;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,9 +40,9 @@ class ProductsController extends Controller
         $request->validate([
             'nama_barang' => 'required',
             'harga_satuan' => 'required',
-            'photo' => 'required|image',
+            'photo' => 'required',
         ]);
-        $product = new Products ([
+        $product = new Product ([
             'nama_barang' => $request->nama_barang,
             'harga_satuan' => $request->harga_satuan,
             'photo' => $request->photo
@@ -57,9 +57,9 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show($id)
     {
-        return new ProductResources(Product::findOrFail($products));
+        return new ProductResources(Product::findOrFail($id));
     }
 
     /**
@@ -68,7 +68,7 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $id)
+    public function edit($id)
     {
         return new ProductResources(Product::findOrFail($id));
     }
@@ -85,15 +85,31 @@ class ProductsController extends Controller
         $request->validate([
             'nama_barang' => 'required',
             'harga_satuan' => 'required',
-            'photo' => 'required|image',
+            'photo' => 'required',
         ]);
+        
         $product = Product::findOrFail($id);
         $product->nama_barang = $request->nama_barang;
         $product->harga_satuan = $request->harga_satuan;
         $product->photo = $request->photo;
-        $product->save();
 
-        return response()->json(200);
+        // try {
+        //     if ($product->save()){
+        //         return response()->json([
+        //             'data' => 'Ubah Produk berhasil'
+        //         ], 200);    
+        //     }
+        //   }
+        //   catch(exception $e) {
+        //       return response()->json([
+        //           'data' => 'Ubah Produk Gagal'
+        //       ]);
+        //   } 
+        
+        $product->save();
+        return response()->json([
+            'data' => 'Berhasil update!'
+        ]);
     }
 
     /**
